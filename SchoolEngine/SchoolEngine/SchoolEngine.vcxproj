@@ -146,10 +146,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\SchoolEngine\core\Application.cpp" />
+    <ClCompile Include="src\SchoolEngine\core\Window.cpp" />
     <ClCompile Include="src\SchoolEngine\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\SchoolEngine\core\Application.h" />
+    <ClInclude Include="src\SchoolEngine\core\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

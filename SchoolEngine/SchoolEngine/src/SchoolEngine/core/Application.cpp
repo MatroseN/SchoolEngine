@@ -22,7 +22,7 @@ namespace SchoolEngine {
 			std::cout << "IMG_Init has failed. ERROR: " << SDL_GetError() << std::endl;
 
 		if (() != 0) {
-
+			std::cout << "SDL_Init has failed. SDL_ERROR: " << SDL_GetError() << std::endl;
 		}
 	}
 
