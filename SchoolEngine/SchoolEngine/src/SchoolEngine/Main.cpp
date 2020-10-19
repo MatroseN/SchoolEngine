@@ -10,5 +10,6 @@ int main(int argc, char* argv[]) {
 	SchoolEngine::Application app; // Instanciates an application
 	app.run(); // Runds the application
 
+	std::cin.get();
 	return 0;
 }

@@ -37,8 +37,6 @@ namespace SchoolEngine {
 				}
 			}
 		}
-
 		window.cleanUp();
-		SDL_Quit();
 	}
 }
