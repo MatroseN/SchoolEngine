@@ -3,12 +3,12 @@
 #include <SDL.h>
 #include <iostream>
 
+// The entry point for the application
 int main(int argc, char* argv[]) {
 
 	std::cout << "Start..." << std::endl;
-
-	SchoolEngine::Application app;
-	app.run();
+	SchoolEngine::Application app; // Instanciates an application
+	app.run(); // Runds the application
 
 	return 0;
 }

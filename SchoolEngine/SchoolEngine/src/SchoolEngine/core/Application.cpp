@@ -23,11 +23,13 @@ namespace SchoolEngine {
 	}
 
 	void Application::run() {
+		// Creates a window
 		Window window("Test", 1280, 720);
 
 		bool running = true;
 		SDL_Event event;
 
+		// Application Loop runs until event == SDL_QUIT
 		while (running) {
 			while (SDL_PollEvent(&event)) {
 				if (event.type == SDL_QUIT) {
