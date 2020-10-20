@@ -26,7 +26,7 @@ namespace SchoolEngine {
 
 	void Application::run() {
 		// Creates a window
-		Window window("Test", 1280, 720);
+		Window window("Test", 1366, 720);
 
 		bool running = true;
 		SDL_Event event;
