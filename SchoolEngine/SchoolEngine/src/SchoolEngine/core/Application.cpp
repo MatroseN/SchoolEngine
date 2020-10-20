@@ -33,8 +33,24 @@ namespace SchoolEngine {
 
 		SDL_Texture* testTexture = window.loadTexture("Content/Textures/Sprites/TestSquareRed.png"); // TODO: REMOVE
 
-		const entt::entity square = makeSquare(reg);
-		Point position = reg.get<Point>(square);
+		for (int i = 0; i < 10; i++) {
+			entt::entity e = makeSquare(reg);
+		}
+
+		auto view = reg.view<Point>();
+
+		int x = 100;
+		int y = 100;
+
+		const int adder = 64;
+
+		for (const entt::entity entity : view) {
+			Point& pos = view.get<Point>(entity);
+			pos.X = x;
+			pos.Y = y;
+
+			x += adder;
+		}
 
 
 		// Application Loop runs until event == SDL_QUIT
@@ -44,9 +60,13 @@ namespace SchoolEngine {
 					running = false;
 				}
 			}
+			auto view = reg.view<Point>();
 
 			window.clear();
-			window.render(testTexture, 32, 32, position.X, position.Y);
+			for (const entt::entity entity : view) {
+				Point& pos = view.get<Point>(entity);
+				window.render(testTexture, 32, 32, pos.X, pos.Y);
+			}
 			window.display();
 		}
 		window.cleanUp();
