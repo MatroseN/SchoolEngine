@@ -1,5 +1,7 @@
 #include "Application.h"
 #include "Window.h"
+#include "../components/Position.h"
+#include "../util/Factory.h"
 #include <SDL.h>
 #include <SDL_image.h>
 #include <stdio.h>
@@ -29,6 +31,10 @@ namespace SchoolEngine {
 		bool running = true;
 		SDL_Event event;
 
+		SDL_Texture* testTexture = window.loadTexture("Content/Textures/Sprites/TestSquareRed.png"); // TODO: REMOVE
+
+
+
 		// Application Loop runs until event == SDL_QUIT
 		while (running) {
 			while (SDL_PollEvent(&event)) {
@@ -36,6 +42,10 @@ namespace SchoolEngine {
 					running = false;
 				}
 			}
+
+			window.clear();
+			window.render(testTexture, 32, 32, 400, 400);
+			window.display();
 		}
 		window.cleanUp();
 	}

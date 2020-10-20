@@ -148,10 +148,25 @@
     <ClCompile Include="src\SchoolEngine\core\Application.cpp" />
     <ClCompile Include="src\SchoolEngine\core\Window.cpp" />
     <ClCompile Include="src\SchoolEngine\Main.cpp" />
+    <ClCompile Include="src\SchoolEngine\systems\Accelerate.cpp" />
+    <ClCompile Include="src\SchoolEngine\systems\Move.cpp" />
+    <ClCompile Include="src\SchoolEngine\util\Factory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\SchoolEngine\components\Acceleration.h" />
+    <ClInclude Include="src\SchoolEngine\components\Direction.h" />
+    <ClInclude Include="src\SchoolEngine\components\Position.h" />
+    <ClInclude Include="src\SchoolEngine\components\Velocity.h" />
+    <ClInclude Include="src\SchoolEngine\constants\Constants.h" />
     <ClInclude Include="src\SchoolEngine\core\Application.h" />
     <ClInclude Include="src\SchoolEngine\core\Window.h" />
+    <ClInclude Include="src\SchoolEngine\entities\Square.h" />
+    <ClInclude Include="src\SchoolEngine\states\EntityDirection.h" />
+    <ClInclude Include="src\SchoolEngine\systems\Accelerate.h" />
+    <ClInclude Include="src\SchoolEngine\systems\Move.h" />
+    <ClInclude Include="src\SchoolEngine\util\Factory.h" />
+    <ClInclude Include="src\SchoolEngine\util\Point.h" />
+    <ClInclude Include="src\SchoolEngine\util\Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
