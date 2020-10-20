@@ -12,12 +12,11 @@ namespace SchoolEngine {
 		else {
 			std::cout << "Window created!" << std::endl;
 		}
-			
 
 		_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
 
 		if (_renderer == NULL) {
-			std::cout << "´Renderer failed to init. Error: " << SDL_GetError() << std::endl;
+			std::cout << "Renderer failed to init. Error: " << SDL_GetError() << std::endl;
 		}
 		else {
 			std::cout << "Renderer created!" << std::endl;

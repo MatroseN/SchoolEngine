@@ -36,7 +36,6 @@ namespace SchoolEngine {
 		const entt::entity square = makeSquare(reg);
 		Point position = reg.get<Point>(square);
 
-
 		// Application Loop runs until event == SDL_QUIT
 		while (running) {
 			while (SDL_PollEvent(&event)) {

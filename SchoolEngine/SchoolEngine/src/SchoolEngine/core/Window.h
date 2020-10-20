@@ -15,6 +15,7 @@ namespace SchoolEngine {
 		void clear();
 		void render(SDL_Texture* tex, unsigned short  int sizeX, unsigned short  int sizeY, unsigned short  int posX, unsigned short  int posY);
 		void display();
+    
 	private:
 		SDL_Window* _window;
 		SDL_Renderer* _renderer;
