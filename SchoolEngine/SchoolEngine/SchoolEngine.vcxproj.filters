@@ -41,9 +41,6 @@
     <ClInclude Include="src\SchoolEngine\core\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SchoolEngine\components\Position.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\SchoolEngine\util\Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>

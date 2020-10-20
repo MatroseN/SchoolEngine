@@ -1,5 +1,5 @@
 #pragma once
 
-#include "../components/Position.h"
+#include "../util/Point.h"
 
-constexpr Position squareSpawnPos{400, 400};
+constexpr Point squareSpawnPos{300, 200};

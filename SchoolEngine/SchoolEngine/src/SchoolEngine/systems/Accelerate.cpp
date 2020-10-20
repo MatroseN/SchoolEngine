@@ -3,8 +3,8 @@
 void accelerate(entt::registry& reg) {
 	auto view = reg.view<Acceleration, Velocity>();
 	for (const entt::entity entity : view) {
-		Acceleration& accel = view.get<Acceleration>(entity).Acceleration;
-		Velocity& velocity = view.get<Velocity>(entity).Velocity;
+		Acceleration& accel = view.get<Acceleration>(entity);
+		Velocity& velocity = view.get<Velocity>(entity);
 
 		if(accel.acceleration.X < accel.max)
 			velocity.velocity.X += accel.acceleration.X;
