@@ -12,20 +12,11 @@ namespace SchoolEngine {
 		else {
 			std::cout << "Window created!" << std::endl;
 		}
-<<<<<<< HEAD
-			
-=======
-
->>>>>>> main
 
 		_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
 
 		if (_renderer == NULL) {
-<<<<<<< HEAD
-			std::cout << "´Renderer failed to init. Error: " << SDL_GetError() << std::endl;
-=======
 			std::cout << "Renderer failed to init. Error: " << SDL_GetError() << std::endl;
->>>>>>> main
 		}
 		else {
 			std::cout << "Renderer created!" << std::endl;
@@ -43,8 +34,6 @@ namespace SchoolEngine {
 		return texture;
 	}
 
-<<<<<<< HEAD
-=======
 	void Window::render(SDL_Texture* tex, unsigned short  int sizeX, unsigned short  int sizeY, unsigned short  int posX, unsigned short  int posY) {
 		SDL_Rect src;
 		src.x = 0;
@@ -69,7 +58,6 @@ namespace SchoolEngine {
 		SDL_RenderClear(_renderer);
 	}
 
->>>>>>> main
 	void Window::cleanUp() {
 		SDL_DestroyWindow(_window);
 		std::cout << "Window destroyed!" << std::endl;

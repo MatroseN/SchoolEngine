@@ -1,4 +1,5 @@
 #pragma once
+#include <entt.hpp>
 
 namespace SchoolEngine {
 	// Driver that creates the application
@@ -12,5 +13,7 @@ namespace SchoolEngine {
 	private:
 		// Initializes the application with what it needs to be able to run
 		void initialize();
+
+		entt::registry reg;
 	};
 }
