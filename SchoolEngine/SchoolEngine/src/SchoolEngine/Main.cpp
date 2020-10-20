@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
 
 	std::cout << "Start..." << std::endl;
 	SchoolEngine::Application app; // Instanciates an application
-	app.run(); // Runds the application
+	app.run(); // Runs the application
 
 	std::cin.get();
 	return 0;
