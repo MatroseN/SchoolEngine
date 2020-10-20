@@ -12,6 +12,12 @@ namespace SchoolEngine {
 		SDL_Texture* loadTexture(const char* filePath);
 		// Run before closing the window (when the application is exited)
 		void cleanUp();
+<<<<<<< HEAD
+=======
+		void clear();
+		void render(SDL_Texture* tex, unsigned short  int sizeX, unsigned short  int sizeY, unsigned short  int posX, unsigned short  int posY);
+		void display();
+>>>>>>> main
 	private:
 		SDL_Window* _window;
 		SDL_Renderer* _renderer;
