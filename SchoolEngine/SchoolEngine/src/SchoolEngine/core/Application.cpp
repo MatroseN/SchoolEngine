@@ -33,7 +33,7 @@ namespace SchoolEngine {
 
 		SDL_Texture* testTexture = window.loadTexture("Content/Textures/Sprites/TestSquareRed.png"); // TODO: REMOVE
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20; i++) {
 			entt::entity e = makeSquare(reg);
 		}
 
