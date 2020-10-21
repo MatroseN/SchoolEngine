@@ -39,8 +39,13 @@ namespace SchoolEngine {
 
 		auto view = reg.view<Point>();
 
-		int x = 100;
-		int y = 100;
+		int x = 50;
+		int y = 300;
+		float sizeX = 32.0f;
+		float sizeY = 32.0f;
+		float angle = 0;
+		SDL_Point center = { sizeX / 2, sizeY / 2 };
+		SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 		const int adder = 64;
 
@@ -53,6 +58,10 @@ namespace SchoolEngine {
 		}
 
 
+		float currentTime = SDL_GetTicks();
+		float lastTime = currentTime;
+		float deltaTime = (currentTime - lastTime) / 1000.0f;
+
 		// Application Loop runs until event == SDL_QUIT
 		while (running) {
 			while (SDL_PollEvent(&event)) {
@@ -60,14 +69,24 @@ namespace SchoolEngine {
 					running = false;
 				}
 			}
+
+			currentTime = SDL_GetTicks();
+			deltaTime = (currentTime - lastTime) / 1000.0f;
+
 			auto view = reg.view<Point>();
 
 			window.clear();
 			for (const entt::entity entity : view) {
 				Point& pos = view.get<Point>(entity);
-				window.render(testTexture, 32, 32, pos.X, pos.Y);
+				window.render(testTexture, sizeX, sizeY, pos.X, pos.Y, angle, center, flip);
+				angle += 1.0f * deltaTime;
+				sizeX += 2.0f * deltaTime;
+				sizeY += 2.0f * deltaTime;
+				center = { int(sizeX / 2), int(sizeY / 2) };
 			}
 			window.display();
+
+			lastTime = currentTime;
 		}
 		window.cleanUp();
 	}
