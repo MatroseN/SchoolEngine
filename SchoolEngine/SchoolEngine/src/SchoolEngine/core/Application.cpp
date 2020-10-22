@@ -60,6 +60,7 @@ namespace SchoolEngine {
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
 			case SDL_QUIT:
+				_running = false;
 				break;
 			default:
 				break;
