@@ -2,10 +2,14 @@
 #include "../entities/Square.h"
 #include "../constants/Constants.h"
 #include "../util/Point.h"
+#include "../util/Vector2.h"
+#include "../components/Angle.h"
 
-entt::entity makeSquare(entt::registry &reg) {
+entt::entity makeSquare(entt::registry &reg, Vector2 size) {
 	const entt::entity entity = reg.create();
 	reg.emplace<Square>(entity);
 	reg.emplace<Point>(entity, squareSpawnPos);
+	reg.emplace<Vector2>(entity, size);
+	reg.emplace<Angle>(entity, squareDefaultAngle);
 	return entity;
 }

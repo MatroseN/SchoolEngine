@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\SchoolEngine\components\Acceleration.h" />
+    <ClInclude Include="src\SchoolEngine\components\Angle.h" />
     <ClInclude Include="src\SchoolEngine\components\Direction.h" />
     <ClInclude Include="src\SchoolEngine\components\Velocity.h" />
     <ClInclude Include="src\SchoolEngine\constants\Constants.h" />

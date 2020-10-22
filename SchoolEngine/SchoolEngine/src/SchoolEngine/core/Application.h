@@ -13,7 +13,14 @@ namespace SchoolEngine {
 	private:
 		// Initializes the application with what it needs to be able to run
 		void initialize();
+		void update(float deltaTime);
+		void handleEvents();
+		void calculateDeltaTime();
 
-		entt::registry reg;
+		entt::registry _reg;
+		float _deltaTime;
+		float _currentTime;
+		float _lastTime;
+		bool _running;
 	};
 }

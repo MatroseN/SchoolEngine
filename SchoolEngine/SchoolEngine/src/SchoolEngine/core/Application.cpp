@@ -2,10 +2,12 @@
 #include "Window.h"
 #include "../util/Factory.h"
 #include "../util/Point.h"
+#include "../util/Vector2.h"
 #include <SDL.h>
 #include <SDL_image.h>
 #include <stdio.h>
 #include<iostream>
+#include "../components/Angle.h"
 
 namespace SchoolEngine {
 	Application::Application() {
@@ -22,31 +24,18 @@ namespace SchoolEngine {
 
 		if ((IMG_Init(IMG_INIT_PNG)) < 0)
 			std::cout << "IMG_Init has failed. ERROR: " << SDL_GetError() << std::endl;
-	}
 
-	void Application::run() {
-		// Creates a window
-		Window window("Test", 1366, 720);
 
-		bool running = true;
-		SDL_Event event;
-
-		SDL_Texture* testTexture = window.loadTexture("Content/Textures/Sprites/TestSquareRed.png"); // TODO: REMOVE
+		// Initialization logic below
 
 		for (int i = 0; i < 20; i++) {
-			entt::entity e = makeSquare(reg);
+			entt::entity e = makeSquare(_reg, Vector2{32.0f, 32.0f});
 		}
 
-		auto view = reg.view<Point>();
+		auto view = _reg.view<Point>();
 
 		int x = 50;
 		int y = 300;
-		float sizeX = 32.0f;
-		float sizeY = 32.0f;
-		float angle = 0;
-		SDL_Point center = { sizeX / 2, sizeY / 2 };
-		SDL_RendererFlip flip = SDL_FLIP_NONE;
-
 		const int adder = 64;
 
 		for (const entt::entity entity : view) {
@@ -57,36 +46,59 @@ namespace SchoolEngine {
 			x += adder;
 		}
 
+	}
 
-		float currentTime = SDL_GetTicks();
-		float lastTime = currentTime;
-		float deltaTime = (currentTime - lastTime) / 1000.0f;
+	void Application::calculateDeltaTime() {
+		_currentTime = SDL_GetTicks();
+		_lastTime = _currentTime;
+		_deltaTime = (_currentTime - _lastTime) / 1000.0f;
+	}
+
+	void Application::handleEvents() {
+		SDL_Event event;
+
+		while (SDL_PollEvent(&event)) {
+			switch (event.type) {
+			case SDL_QUIT:
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	void Application::update(float deltaTime) {
+
+	}
+
+	void Application::run() {
+		// Creates a window
+		Window window("Test", 1366, 720);
+
+		SDL_Texture* testTexture = window.loadTexture("Content/Textures/Sprites/TestSquareRed.png"); // TODO: REMOVE
 
 		// Application Loop runs until event == SDL_QUIT
-		while (running) {
-			while (SDL_PollEvent(&event)) {
-				if (event.type == SDL_QUIT) {
-					running = false;
-				}
-			}
+		_running = true;
+		while (_running) {
+			handleEvents();
 
-			currentTime = SDL_GetTicks();
-			deltaTime = (currentTime - lastTime) / 1000.0f;
-
-			auto view = reg.view<Point>();
+			auto view = _reg.view<Point, Vector2, Angle>();
 
 			window.clear();
 			for (const entt::entity entity : view) {
 				Point& pos = view.get<Point>(entity);
-				window.render(testTexture, sizeX, sizeY, pos.X, pos.Y, angle, center, flip);
-				angle += 1.0f * deltaTime;
-				sizeX += 2.0f * deltaTime;
-				sizeY += 2.0f * deltaTime;
-				center = { int(sizeX / 2), int(sizeY / 2) };
+				Vector2& size = view.get<Vector2>(entity);
+				Angle& angle = view.get<Angle>(entity);
+
+				SDL_RendererFlip flip = SDL_FLIP_NONE;
+				SDL_Point center = { int(size.X / 2), int(size.Y / 2) };
+
+				window.render(testTexture, size.X, size.Y, pos.X, pos.Y, angle.Angle, center, flip);
+
 			}
 			window.display();
 
-			lastTime = currentTime;
+			_lastTime = _currentTime;
 		}
 		window.cleanUp();
 	}
