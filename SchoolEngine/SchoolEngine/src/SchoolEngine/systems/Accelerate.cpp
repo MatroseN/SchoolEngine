@@ -1,15 +1,22 @@
 #include "Accelerate.h"
+#include "../constants/Constants.h"
 
-void accelerate(entt::registry& reg) {
-	auto view = reg.view<Acceleration, Velocity>();
+void accelerate(entt::registry& reg, float deltaTime) {
+	auto view = reg.view<Velocity, Acceleration>();
 	for (const entt::entity entity : view) {
-		Acceleration& accel = view.get<Acceleration>(entity);
 		Velocity& velocity = view.get<Velocity>(entity);
+		Acceleration& acceleration = view.get<Acceleration>(entity);
 
-		if(accel.acceleration.X < accel.max)
-			velocity.velocity.X += accel.acceleration.X;
+		velocity.velocity.X += squareAcceleration * deltaTime;
 
-		if(accel.acceleration.Y < accel.max)
-			velocity.velocity.Y += accel.acceleration.Y;
+		if (velocity.velocity.X >= squareMaxVelocity) {
+			velocity.velocity.X = squareMaxVelocity;
+		}
+
+		velocity.velocity.Y += squareAcceleration * deltaTime;
+
+		if (velocity.velocity.Y >= squareMaxVelocity) {
+			velocity.velocity.Y = squareMaxVelocity;
+		}
 	}
 }

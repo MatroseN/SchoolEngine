@@ -11,5 +11,8 @@ entt::entity makeSquare(entt::registry &reg, Vector2 size) {
 	reg.emplace<Point>(entity, squareSpawnPos);
 	reg.emplace<Vector2>(entity, size);
 	reg.emplace<Angle>(entity, squareDefaultAngle);
+	reg.emplace<Velocity>(entity, squareVelocity);
+	reg.emplace<Direction>(entity, squareDefualtDirection);
+	reg.emplace<Acceleration>(entity, 0.0f);
 	return entity;
 }

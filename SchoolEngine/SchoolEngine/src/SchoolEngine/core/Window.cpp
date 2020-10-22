@@ -35,7 +35,7 @@ namespace SchoolEngine {
 		return texture;
 	}
 
-	void Window::render(SDL_Texture* tex, float sizeX, float sizeY, unsigned short  int posX, unsigned short  int posY, float angle, SDL_Point center, SDL_RendererFlip flip) {
+	void Window::render(SDL_Texture* tex, float sizeX, float sizeY, int posX, int posY, float angle, SDL_Point center, SDL_RendererFlip flip) {
 		SDL_Rect src;
 		src.x = 0;
 		src.y = 0;
@@ -51,7 +51,7 @@ namespace SchoolEngine {
 		SDL_RenderCopyEx(_renderer, tex, &src, &dst, angle, &center, flip);
 	}
 
-	void Window::render(SDL_Texture* tex, float sizeX, float sizeY, unsigned short  int posX, unsigned short  int posY) {
+	void Window::render(SDL_Texture* tex, float sizeX, float sizeY,int posX, int posY) {
 		SDL_Rect src;
 		src.x = 0;
 		src.y = 0;

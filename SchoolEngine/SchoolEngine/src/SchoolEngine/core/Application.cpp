@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include<iostream>
 #include "../components/Angle.h"
+#include "../systems/Move.h"
+#include "../systems/Accelerate.h"
 
 namespace SchoolEngine {
 	Application::Application() {
@@ -28,7 +30,7 @@ namespace SchoolEngine {
 
 		// Initialization logic below
 
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 1; i++) {
 			entt::entity e = makeSquare(_reg, Vector2{32.0f, 32.0f});
 		}
 
@@ -48,12 +50,6 @@ namespace SchoolEngine {
 
 	}
 
-	void Application::calculateDeltaTime() {
-		_currentTime = SDL_GetTicks();
-		_lastTime = _currentTime;
-		_deltaTime = (_currentTime - _lastTime) / 1000.0f;
-	}
-
 	void Application::handleEvents() {
 		SDL_Event event;
 
@@ -69,7 +65,8 @@ namespace SchoolEngine {
 	}
 
 	void Application::update(float deltaTime) {
-
+		accelerate(_reg, deltaTime);
+		move(_reg, deltaTime);
 	}
 
 	void Application::run() {
@@ -77,11 +74,25 @@ namespace SchoolEngine {
 		Window window("Test", 1366, 720);
 
 		SDL_Texture* testTexture = window.loadTexture("Content/Textures/Sprites/TestSquareRed.png"); // TODO: REMOVE
+		
+		// Timing variables
+		Uint32 old_time, current_time;
+		float ftime;
+
+		// Need to initialize this here for event loop to work
+		current_time = SDL_GetTicks();
 
 		// Application Loop runs until event == SDL_QUIT
 		_running = true;
 		while (_running) {
 			handleEvents();
+
+			// Update the timing information
+			old_time = current_time;
+			current_time = SDL_GetTicks();
+			ftime = (current_time - old_time) / 1000.0f;
+
+			update(ftime);
 
 			auto view = _reg.view<Point, Vector2, Angle>();
 
@@ -95,11 +106,8 @@ namespace SchoolEngine {
 				SDL_Point center = { int(size.X / 2), int(size.Y / 2) };
 
 				window.render(testTexture, size.X, size.Y, pos.X, pos.Y, angle.Angle, center, flip);
-
 			}
 			window.display();
-
-			_lastTime = _currentTime;
 		}
 		window.cleanUp();
 	}

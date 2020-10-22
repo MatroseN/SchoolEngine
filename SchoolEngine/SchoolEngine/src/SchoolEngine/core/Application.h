@@ -15,12 +15,8 @@ namespace SchoolEngine {
 		void initialize();
 		void update(float deltaTime);
 		void handleEvents();
-		void calculateDeltaTime();
 
 		entt::registry _reg;
-		float _deltaTime;
-		float _currentTime;
-		float _lastTime;
-		bool _running;
+		bool _running = false;
 	};
 }
